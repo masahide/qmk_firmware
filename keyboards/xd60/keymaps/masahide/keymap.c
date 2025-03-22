@@ -28,6 +28,7 @@ enum layer_names {
     _Mac1,
     _Mac2,
     _Win0,
+    _WinG,
     _Win1,
     _Win2,
     _WinALT,
@@ -39,52 +40,62 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	[_Mac0] = LAYOUT_masahide(
 			KC_ESC,   KC_1,	   KC_2,    KC_3,	KC_4,	KC_5,		 KC_6,	  KC_7,   KC_8,    KC_9,	KC_0,	 KC_MINS,  KC_EQL,	KC_BSPC,
 			KC_TAB,   KC_Q,	   KC_W,    KC_E,	KC_R,	KC_T,		 KC_Y,	  KC_U,   KC_I,    KC_O,	KC_P,	 KC_LBRC,  KC_RBRC, KC_BSLS,
-			MO(_Mac1),KC_A,	   KC_S,    KC_D,	KC_F,	KC_G,		 KC_H,	  KC_J,   KC_K,    KC_L,	KC_SCLN, KC_QUOT,  KC_ENT,			 
+			KC_CAPS,  KC_A,	   KC_S,    KC_D,	KC_F,	KC_G,		 KC_H,	  KC_J,   KC_K,    KC_L,	KC_SCLN, KC_QUOT,  KC_ENT,
 			KC_LSFT,  KC_Z,	   KC_X,    KC_C,	KC_V,	KC_B,		 KC_N,	  KC_M,   KC_COMM, KC_DOT,	KC_SLSH,           KC_RSFT,
 			KC_LCTL,  KC_LALT, KC_LGUI,			LT(_Mac1,KC_SPC),    KC_SPC,          KC_RCTL, KC_RGUI, KC_RALT, KC_LEFT,  KC_DOWN, KC_RGHT),
 
 	[_Mac1] = LAYOUT_masahide(
 			KC_GRAVE, KC_F1,   KC_F2,   KC_F3,	KC_F4,	KC_F5,       KC_F6,   KC_F7,  KC_F8,  KC_F9,  KC_F10, KC_F11, KC_F12,	KC_DEL,
 			_______,  _______,KC_MS_U,_______,_______,_______,		 C(S(KC_TAB)),KC_PGDN,KC_PGUP,C(KC_TAB),_______,_______,_______, _______,
-			KC_CAPS,  KC_MS_L,KC_MS_D,KC_MS_R,_______,_______,		 KC_LEFT, KC_DOWN,KC_UP,  KC_RGHT,_______,_______,_______,
-			_______,  _______,_______,_______,_______,_______,		 KC_BTN1, KC_BTN2,_______,_______,_______,        KC_UP,
+			MO(_Mac2),KC_MS_L,KC_MS_D,KC_MS_R,C(KC_E),_______,		 KC_LEFT, KC_DOWN,KC_UP,  KC_RGHT,_______,_______,G(KC_ENT),
+			_______,  G(KC_Z),G(KC_X),G(KC_C),G(KC_V),_______,		 KC_BTN1, KC_BTN2,_______,_______,_______,        KC_UP,
 			_______,  _______,_______,				  _______,       LT(_Mac2,KC_SPC),_______,_______,_______,_______,_______, _______),
 
 	[_Mac2] = LAYOUT_masahide(
-			KC_TILD,  _______,DF(_Win0),_______,_______,_______,       _______, _______,_______,_______,_______, _______, _______, _______,
+			S(KC_GRAVE),_______,DF(_Win0),DF(_WinG),_______,_______,   _______, _______,_______,_______,_______, _______, _______, _______,
 			_______,  _______,_______,_______,_______,_______,	     _______, _______,_______,_______,_______, _______, _______, _______,
 			_______,  _______,_______,_______,_______,_______,	     _______, _______,_______,_______,_______, _______, _______,
-			_______,  _______,_______,_______,_______,_______,	     _______, _______,_______,_______,_______,          _______,	
+			_______,  _______,_______,_______,_______,_______,	     _______, _______,_______,_______,_______,          _______,
 			_______,  _______,_______,				  _______,       _______,         _______,_______,_______, _______,_______, _______),
 
 // Windows
 	[_Win0] = LAYOUT_masahide(
 			KC_GESC,  KC_1,	   KC_2,     KC_3,	KC_4,	KC_5,		 KC_6,	  KC_7,   KC_8,    KC_9,	KC_0,	 KC_MINS,  KC_EQL,	KC_BSPC,
 			KC_TAB,   KC_Q,	   KC_W,     KC_E,	KC_R,	KC_T,		 KC_Y,	  KC_U,   KC_I,    KC_O,	KC_P,	 KC_LBRC,  KC_RBRC, KC_BSLS,
-			MO(_Win1),KC_A,	   KC_S,     KC_D,	KC_F,	KC_G,		 KC_H,	  KC_J,   KC_K,    KC_L,	KC_SCLN, KC_QUOT,  KC_ENT,			 
+			S(KC_CAPS),KC_A,   KC_S,     KC_D,	KC_F,	KC_G,		 KC_H,	  KC_J,   KC_K,    KC_L,	KC_SCLN, KC_QUOT,  KC_ENT,
 			KC_LSFT,  KC_Z,	   KC_X,     KC_C,	KC_V,	KC_B,		 KC_N,	  KC_M,   KC_COMM, KC_DOT,	KC_SLSH,           KC_RSFT,
 			KC_LCTL,  KC_LGUI, MO(_WinALT),	  	LT(_Win1,KC_SPC),    KC_SPC,          KC_RCTL, KC_RALT, KC_RGUI, KC_LEFT,  KC_DOWN, KC_RGHT),
+
+	[_WinG] = LAYOUT_masahide(
+			_______,  _______,  _______,_______,_______,_______,     _______, _______,_______, _______,_______,  _______,  _______, _______,
+			_______,  _______,  _______,_______,_______,_______,	 _______, _______,_______, _______,_______,  _______,  _______, _______,
+			S(KC_CAPS),_______,	_______,_______,_______,_______,	 _______, _______,_______, _______,_______,  _______,  _______,
+			_______,  _______,	_______,_______,_______,_______,	 _______, _______,_______, _______,_______,            KC_UP,
+			KC_LCTL,  KC_LALT, MO(_WinALT),   	          KC_SPC,    KC_SPC,          MO(_Win2),KC_RALT,KC_RGUI, KC_LEFT,  KC_DOWN, KC_RGHT),
+
 
 	[_Win1] = LAYOUT_masahide(
 			KC_GRAVE, KC_F1,   KC_F2,    KC_F3,	KC_F4,	KC_F5,       KC_F6,   KC_F7,  KC_F8,  KC_F9,  KC_F10, KC_F11,  KC_F12,	KC_DEL,
 			_______,  _______,KC_MS_U,_______,_______,_______,		 C(S(KC_TAB)),KC_PGDN,KC_PGUP,C(KC_TAB),_______,_______,_______, _______,
-			KC_CAPS,  KC_MS_L,KC_MS_D,KC_MS_R,_______,_______,		 KC_LEFT, KC_DOWN,KC_UP,  KC_RGHT,_______,_______,_______,
-			_______,  _______,_______,_______,_______,_______,		 KC_BTN1, KC_BTN2,_______,_______,_______,        KC_UP,
-			_______,  _______, _______,			       _______,      LT(_Win2,KC_SPC),_______, _______,_______,_______,_______, _______),
+			KC_CAPS,  KC_MS_L,KC_MS_D,KC_MS_R,C(KC_E),_______,		 KC_LEFT, KC_DOWN,KC_UP,  KC_RGHT,_______,_______,A(KC_ENT),
+			_______,  C(KC_Z),C(KC_X),C(KC_C),C(KC_V),_______,		 KC_BTN1, KC_BTN2,_______,_______,_______,         KC_UP,
+			_______,  KC_LGUI, MO(_WinALT),			  _______,       LT(_Win2,KC_SPC),KC_RCTL, _______,_______,_______,_______, _______),
 
 	[_Win2] = LAYOUT_masahide(
-			KC_TILD,  DF(_Mac0),_______,_______,_______,_______,    _______, _______,_______, _______,_______, _______, _______, _______,
+			KC_TILD, DF(_Mac0),DF(_Win0),DF(_WinG),_______,_______, _______, _______,_______, _______,_______, _______, _______, _______,
 			_______,  _______,  _______,_______,_______,_______,	_______, _______,_______, _______,_______, _______, _______, _______,
-			_______,  _______,	_______,_______,_______,_______,	_______, _______,_______, _______,_______, _______, _______,
-			_______,  _______,	_______,_______,_______,_______,	_______, _______,_______, _______,_______,          _______,	
+			KC_CAPS,  _______,	_______,_______,_______,_______,	_______, _______,_______, _______,_______, _______, _______,
+			_______,  _______,	_______,_______,_______,_______,	_______, _______,_______, _______,_______,          _______,
 			_______,  _______,  _______,		 	    _______,    _______,         _______, _______,_______, _______, _______, _______),
+
 
 	[_WinALT] = LAYOUT_masahide(
 			KC_GESC,  A(KC_1), A(KC_2),  A(KC_3),A(KC_4),A(KC_5),   A(KC_6),  A(KC_7),A(KC_8), A(KC_9),	A(KC_0), A(KC_MINS),  A(KC_EQL), A(KC_DEL),
-			_______,  A(KC_F4),C(KC_W),  C(KC_E),C(KC_R),C(KC_T),	A(KC_Y),  A(KC_U),A(KC_I), A(KC_O),	A(KC_P), A(KC_LEFT),  A(KC_RGHT),A(KC_BSLS),
+			_______,  A(KC_F4),C(KC_W),  C(KC_E),C(KC_R),C(KC_T),	A(KC_Y),  A(KC_U),A(KC_I), A(KC_O),	A(KC_P), C(KC_PGUP),  C(KC_PGDN),A(KC_BSLS),
 			_______,  C(KC_A), C(KC_S),  C(KC_D),C(KC_F),C(KC_G),	A(KC_H),  A(KC_J),A(KC_K), A(KC_L),A(KC_SCLN),A(KC_QUOT), A(KC_ENT),
  			_______,  C(KC_Z), C(KC_X),  C(KC_C),C(KC_V),C(KC_B),   C(KC_N),  A(KC_M),A(KC_COMM),A(KC_DOT),A(KC_SLSH),        A(KC_UP),
-			_______,  _______, _______,	    	LT(_Win1,KC_SPC),   KC_SPC,           _______, _______, _______, A(KC_LEFT),  A(KC_DOWN), A(KC_RGHT)),
+			_______,  KC_LGUI, _______,	    	LT(_Win1,KC_SPC),   KC_SPC           MO(_Win2),_______, _______, A(KC_LEFT),  A(KC_DOWN), A(KC_RGHT)),
+
 };
 
 
@@ -119,8 +130,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #endif
 
 #ifdef CONSOLE_ENABLE
-        uprintf("KL: kc: %u, col: %u, row: %u, pressed: %u\n", keycode, record->event.key.col, record->event.key.row, record->event.pressed);
-#endif 
+        uprintf("KL: kc: %u, col: %u, row: %u, pressed: %u layer:%u\n", keycode, record->event.key.col, record->event.key.row, record->event.pressed, layer_state);
+#endif
 
     check_alt_tab(keycode,record);
 
@@ -148,34 +159,39 @@ void matrix_scan_user(void) {
 }
 
 #ifdef RGBLIGHT_ENABLE
-const rgblight_segment_t PROGMEM my_0_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+const rgblight_segment_t PROGMEM Mac0_layer[] = RGBLIGHT_LAYER_SEGMENTS(
 	{0, 6, HSV_CYAN},
 	{6, 6, HSV_BLUE}
 );
 
-const rgblight_segment_t PROGMEM my_1_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+const rgblight_segment_t PROGMEM Mac1_layer[] = RGBLIGHT_LAYER_SEGMENTS(
 	{1, 4, HSV_GREEN},
 	{7, 4, HSV_GREEN}
 );
-const rgblight_segment_t PROGMEM my_2_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+const rgblight_segment_t PROGMEM Mac2_layer[] = RGBLIGHT_LAYER_SEGMENTS(
 	{1, 4, HSV_PURPLE},
 	{7, 4, HSV_PURPLE}
 );
 
-const rgblight_segment_t PROGMEM my_3_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+const rgblight_segment_t PROGMEM Win0_layer[] = RGBLIGHT_LAYER_SEGMENTS(
 	{0, 6, HSV_WHITE},
 	{6, 6, HSV_WHITE}
 );
 
-const rgblight_segment_t PROGMEM my_4_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+const rgblight_segment_t PROGMEM WinG_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+	{0, 6, HSV_GREEN},
+	{6, 6, HSV_GREEN}
+);
+
+const rgblight_segment_t PROGMEM Win1_layer[] = RGBLIGHT_LAYER_SEGMENTS(
 	{1, 4, HSV_GREEN},
 	{7, 4, HSV_GREEN}
 );
-const rgblight_segment_t PROGMEM my_5_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+const rgblight_segment_t PROGMEM Win2_layer[] = RGBLIGHT_LAYER_SEGMENTS(
 	{1, 4, HSV_WHITE},
 	{7, 4, HSV_WHITE}
 );
-const rgblight_segment_t PROGMEM my_6_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+const rgblight_segment_t PROGMEM WinALT_layer[] = RGBLIGHT_LAYER_SEGMENTS(
 	{1, 4, HSV_PURPLE},
 	{7, 4, HSV_PURPLE}
 );
@@ -187,17 +203,18 @@ const rgblight_segment_t PROGMEM my_caps_layer[] = RGBLIGHT_LAYER_SEGMENTS(
 	{6, 1, HSV_RED},
 	{11, 1, HSV_RED}
 );
-	
+
 // Now define the array of layers. Later layers take precedence
 const rgblight_segment_t* const PROGMEM my_layers[] = RGBLIGHT_LAYERS_LIST(
-	my_0_layer,
-	my_1_layer,
-	my_2_layer,
-	my_3_layer,
-	my_4_layer,
-	my_5_layer,
-	my_6_layer,
-	my_caps_layer
+	[_Mac0] = Mac0_layer,
+	[_Mac1] = Mac1_layer,
+	[_Mac2] = Mac2_layer,
+	[_Win0] = Win0_layer,
+	[_WinG] = WinG_layer,
+	[_Win1] = Win1_layer,
+	[_Win2] = Win2_layer,
+	[_WinALT] = WinALT_layer,
+	[_CapsColor] = my_caps_layer
 );
 
 
@@ -206,11 +223,22 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 	rgblight_set_layer_state(_Mac1, layer_state_cmp(state, _Mac1));
 	rgblight_set_layer_state(_Mac2, layer_state_cmp(state, _Mac2));
 	rgblight_set_layer_state(_Win0, layer_state_cmp(state, _Win0));
+	rgblight_set_layer_state(_WinG, layer_state_cmp(state, _WinG));
 	rgblight_set_layer_state(_Win1, layer_state_cmp(state, _Win1));
 	rgblight_set_layer_state(_Win2, layer_state_cmp(state, _Win2));
-	rgblight_set_layer_state(_WinALT,layer_state_cmp(state, _WinALT));
-    biton32(default_layer_state) == _Win0 ? rgblight_set_layer_state(_Win0, true) : rgblight_set_layer_state(_Mac0, true);
-	return state;
+    rgblight_set_layer_state(_WinALT,layer_state_cmp(state, _WinALT));
+    switch (biton32(default_layer_state)){
+        case _Win0:
+            rgblight_set_layer_state(_Win0, true);
+            break;
+        case  _Mac0:
+            rgblight_set_layer_state(_Mac0, true);
+            break;
+        case  _WinG:
+            rgblight_set_layer_state(_WinG, true);
+            break;
+    }
+    return state;
 };
 layer_state_t default_layer_state_set_user(layer_state_t state) {
     rgblight_set_layer_state(_Mac0, layer_state_cmp(state, _Mac0));
@@ -242,4 +270,4 @@ void eeconfig_init_user(void) {
 	rgblight_enable(); // Enable RGB by default
 	rgblight_sethsv(HSV_RED);	// Set it to orange by default
 #endif
-}; 
+};
