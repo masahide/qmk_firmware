@@ -7,6 +7,7 @@ enum layer_names {
     _Mac2,
     _Mac3,
     _Win0,
+    _WinGame0,
     _Win1,
     _Win2,
     _Win3,
@@ -60,6 +61,14 @@ LT(_Mac1,KC_CAPS),KC_A,   KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    
         KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
         KC_LCTL, KC_LGUI, MO(_WinALT),      LT(_Win1,KC_SPC), KC_SPC,  LT(_Win2,KC_SPC), KC_RCTL, KC_RALT, KC_LEFT, KC_DOWN, KC_RGHT
 	),
+
+    [_WinGame0] = LAYOUT_60_split_space(
+        KC_GESC, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL,  KC_BSPC,
+        KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC, KC_BSLS,
+        S(KC_CAPS),KC_A,  KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, KC_ENT,
+        KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
+        KC_LCTL, KC_LALT, KC_RALT,   KC_SPC, MO(_Win1),  MO(_Win3), KC_RCTL, KC_LGUI , KC_LEFT, KC_DOWN, KC_RGHT
+	),
     //,: Function Layer
     [_Win1] = LAYOUT_60_split_space(
         KC_GRAVE,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9, KC_F10,   KC_F11, KC_F12,  KC_DEL,
@@ -78,7 +87,7 @@ LT(_Mac1,KC_CAPS),KC_A,   KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    
 	),
     //,: Function Layer
     [_Win3] = LAYOUT_60_split_space(
-        KC_ESC,DF(_Mac0), _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+        KC_ESC,DF(_Mac0),DF(_Win0),DF(_WinGame0), _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
         _______, RGB_TOG, KC_UP,   RGB_MOD, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD, RGB_VAI, RGB_VAD, _______, _______, _______, _______,
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
@@ -92,6 +101,7 @@ LT(_Mac1,KC_CAPS),KC_A,   KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    
  		_______,C(KC_Z), C(KC_X),  C(KC_C), C(KC_V), C(KC_B), C(KC_N),  A(KC_M),A(KC_COMM),A(KC_DOT),A(KC_SLSH),        A(KC_UP),
 		_______, _______, _______,	    	LT(_Win1,KC_SPC), KC_SPC,   _______, _______, _______,  A(KC_LEFT),  A(KC_DOWN), A(KC_RGHT)
 	),
+
 
 };
 
